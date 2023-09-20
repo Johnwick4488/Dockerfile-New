@@ -29,7 +29,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: "docker"
-          IMAGE_TAG: v1
+          IMAGE_TAG: Ngnix
         run: |
           docker build -t $ECR_REGISTRY/$docker:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$docker:$IMAGE_TAG
