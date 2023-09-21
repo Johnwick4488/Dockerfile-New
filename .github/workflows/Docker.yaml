@@ -43,7 +43,7 @@ jobs:
         run: docker build -t new:1.0 nginx-image
 
       - name: Docker tag
-        run: docker tag new 102057119514.dkr.ecr.us-east-1.amazonaws.com/docker:1.0
+        run: docker tag new:1.0 102057119514.dkr.ecr.us-east-1.amazonaws.com/docker:1.0
 
       # - name: Docker push
       #   run: docker push 102057119514.dkr.ecr.us-east-1.amazonaws.com/docker:latest
