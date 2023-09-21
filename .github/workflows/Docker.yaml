@@ -36,3 +36,5 @@ jobs:
       #     docker push $ECR_REGISTRY/$docker:$IMAGE_TAG
       #     echo "::set-output name=image::$ECR_REGISTRY/$docker:$IMAGE_TAG"
       
+      - name: Build docker image
+        run: docker build -t New:1.0 ../nginx-image/.
