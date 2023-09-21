@@ -38,3 +38,6 @@ jobs:
       
       - name: Build docker image
         run: docker build -t new:1.0 nginx-image
+
+      - name: Docker tag
+        run: docker tag docker:latest 102057119514.dkr.ecr.us-east-1.amazonaws.com/docker:latest
