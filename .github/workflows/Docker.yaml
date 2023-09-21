@@ -20,9 +20,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Login to Amazon ECR Private
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+      # - name: Login to Amazon ECR Private
+      #   id: login-ecr
+      #   uses: aws-actions/amazon-ecr-login@v1
 
       # - name: Build, tag, and push image to Amazon ECR
       #   id: build-image
@@ -35,12 +35,15 @@ jobs:
       #     docker build -t $ECR_REGISTRY/$docker:$IMAGE_TAG
       #     docker push $ECR_REGISTRY/$docker:$IMAGE_TAG
       #     echo "::set-output name=image::$ECR_REGISTRY/$docker:$IMAGE_TAG"
+
+      - name: ECR login
+        run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 102057119514.dkr.ecr.us-east-1.amazonaws.com
       
-      - name: Build docker image
-        run: docker build -t new:1.0 nginx-image
+      # - name: Build docker image
+      #   run: docker build -t new:1.0 nginx-image
 
-      - name: Docker tag
-        run: docker tag new:1.0 102057119514.dkr.ecr.us-east-1.amazonaws.com/new:1.0
+      # - name: Docker tag
+      #   run: docker tag new:1.0 102057119514.dkr.ecr.us-east-1.amazonaws.com/new:1.0
 
-      - name: Docker push
-        run: docker push 102057119514.dkr.ecr.us-east-1.amazonaws.com/new:1.0
+      # - name: Docker push
+      #   run: docker push 102057119514.dkr.ecr.us-east-1.amazonaws.com/new:1.0
