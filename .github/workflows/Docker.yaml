@@ -1,10 +1,8 @@
 name: Deploy HTML Application using docker
 
 on:
-  push:
-    branches:
-      - main
-
+  - push
+   
 jobs:
   deploy:
     runs-on: ubuntu-latest
