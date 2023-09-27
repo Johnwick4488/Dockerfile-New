@@ -46,5 +46,5 @@ jobs:
       - name: Docker push
         run: docker push 102057119514.dkr.ecr.us-east-1.amazonaws.com/docker:1.0
 
-      - name: Docker run
-        run: docker build . --file Dockerfile --tag gitflow-test-gui:${{ github.ref_name }} 
+      # - name: Docker run
+      #   run: docker build . --file Dockerfile --tag gitflow-test-gui:${{ github.ref_name }} 
