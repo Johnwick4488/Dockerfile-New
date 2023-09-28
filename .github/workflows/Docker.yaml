@@ -1,7 +1,8 @@
 name: Deploy HTML Application using docker
 
 on:
-  - push
+  push:
+    branches: [ "main" ]
    
 jobs:
   deploy:
