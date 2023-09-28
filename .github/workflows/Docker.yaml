@@ -35,16 +35,16 @@ jobs:
       #     echo "::set-output name=image::$ECR_REGISTRY/$docker:$IMAGE_TAG"
 
       - name: ECR login
-        run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 102057119514.dkr.ecr.us-east-1.amazonaws.com
+        run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 282354058591.dkr.ecr.us-east-1.amazonaws.com
       
       - name: Build docker image
-        run: docker build -t new:1.0 nginx-image
+        run: docker build -t johnwick nginx-image
 
       - name: Docker tag
-        run: docker tag new:1.0 102057119514.dkr.ecr.us-east-1.amazonaws.com/docker:1.0
+        run: docker tag johnwick:latest 282354058591.dkr.ecr.us-east-1.amazonaws.com/johnwick:latest
 
       - name: Docker push
-        run: docker push 102057119514.dkr.ecr.us-east-1.amazonaws.com/docker:1.0
+        run: docker push 282354058591.dkr.ecr.us-east-1.amazonaws.com/johnwick:latest
 
       # - name: Docker run
       #   run: docker build . --file Dockerfile --tag gitflow-test-gui:${{ github.ref_name }} 
