@@ -49,6 +49,9 @@ jobs:
       - name: Build docker image
         run: docker build -t johnwick nginx-image
 
+      - name: Print Pipeline Runner Number
+        run: echo "Runner Number:${{ github.run_number }}"
+
       # - name: Tag Docker image
       #   run: |
       #    docker tag your-image-name:latest your-image-name:${{ steps.version.outputs.tag }}
