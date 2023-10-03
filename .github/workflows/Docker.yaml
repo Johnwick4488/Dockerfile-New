@@ -63,5 +63,4 @@ jobs:
         run: docker push 282354058591.dkr.ecr.us-east-1.amazonaws.com/johnwick:${{ github.run_number }}
 
       - name: Kubectl set command
-        run: kubectl set image deployment/deployment-nginx-image  johnwick=nginx-image --record=true
-    
+        run: kubectl set image deployment/deployment-nginx-image  johnwick=nginx-image
