@@ -75,14 +75,14 @@ jobs:
       - name: aws eks cluster update
         run: aws eks update-kubeconfig --name Johnwick-cluster --region us-east-1
 
-      # - name: kubectl config
-      #   run: echo $KUBECONFIG
+      - name: kubectl config
+        run: echo $KUBECONFIG
 
-      # - name: kube config
-      #   run: KUBECONFIG=$HOME/.kube/config
+      - name: kube config
+        run: KUBECONFIG=$HOME/.kube/config
 
-      # - name: kube config
-      #   run: cat ~/.kube/config
+      - name: kube config
+        run: cat ~/.kube/config
 
       - name: kubectl pods
         run: kubectl get pods
