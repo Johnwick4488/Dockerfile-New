@@ -62,14 +62,27 @@ jobs:
       - name: Docker push
         run: docker push 282354058591.dkr.ecr.us-east-1.amazonaws.com/johnwick:${{ github.run_number }}
 
-      - name: kubectl config
-        run: echo $KUBECONFIG
+      - name: install kubectl
+        run: |
+          curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.1/2023-09-14/bin/linux/amd64/kubectl
+          curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.1/2023-09-14/bin/linux/amd64/kubectl.sha256
+          sha256sum -c kubectl.sha256
+          openssl sha1 -sha256 kubectl
+          chmod +x ./kubectl
+          mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
+          echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
 
-      - name: kube config
-        run: KUBECONFIG=$HOME/.kube/config
+      - name: aws eks cluster update
+        run: aws eks update-kubeconfig --name Johnwick-cluster --region us-east-1
 
-      - name: kube config
-        run: cat ~/.kube/config
+      # - name: kubectl config
+      #   run: echo $KUBECONFIG
+
+      # - name: kube config
+      #   run: KUBECONFIG=$HOME/.kube/config
+
+      # - name: kube config
+      #   run: cat ~/.kube/config
 
       - name: kubectl pods
         run: kubectl get pods
