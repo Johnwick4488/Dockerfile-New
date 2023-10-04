@@ -87,6 +87,9 @@ jobs:
       - name: kubectl deployment
         run: kubectl create deployment deployment-nginx-image --image=282354058591.dkr.ecr.us-east-1.amazonaws.com/johnwick:${{ github.run_number }}
 
+      - name: kubectl expose port
+        run: kubectl expose deployment deployment-nginx-image --type LoadBalancer --port 80
+
       - name: kubectl pods
         run: kubectl get pods
 
