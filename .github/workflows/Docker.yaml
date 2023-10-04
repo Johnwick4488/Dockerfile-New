@@ -68,6 +68,9 @@ jobs:
       - name: kube config
         run: KUBECONFIG=$HOME/.kube/config
 
+      - name: kube config
+        run: cat ~/.kube/config
+
       - name: kubectl pods
         run: kubectl get pods
 
