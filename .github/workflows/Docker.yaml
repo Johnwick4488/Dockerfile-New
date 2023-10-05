@@ -94,4 +94,4 @@ jobs:
         run: kubectl get pods
 
       - name: Kubectl set command
-        run: kubectl set image deployment/deployment-nginx-image  nginx-image=282354058591.dkr.ecr.us-east-1.amazonaws.com/johnwick:${{ github.run_number }}
+        run: kubectl set image deployment/deployment-nginx-image test=282354058591.dkr.ecr.us-east-1.amazonaws.com/johnwick:${{ github.run_number }}
